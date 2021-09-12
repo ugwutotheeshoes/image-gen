@@ -1,5 +1,7 @@
 html,
 body {
+  background-color: hsl(205, 90%, 88%);
+  color: hsl(205, 77%, 27%);
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
