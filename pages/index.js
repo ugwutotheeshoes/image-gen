@@ -1,14 +1,13 @@
 import Head from 'next/head'
-import React, { useState, useEffect } from 'react';
-import { Image, Video, Transformation, CloudinaryContext} from 'cloudinary-react';
-// import Image from 'next/image'
+import React, { useState } from 'react';
+import { Image, Transformation, CloudinaryContext} from 'cloudinary-react';
 import styles from '../styles/Home.module.css';
 
 
 export default function Home() {
   const [pushedData, setPushedData] = useState()
   const [text, setText] = useState(false)
-  const [avatarText, setAvatarText] = useState({
+  const [avatarInitials, setAvatarInitials] = useState({
     firstInitial: '',
     secondInitial: ''
   })
@@ -28,15 +27,13 @@ export default function Home() {
   }
 
   const getInitials = (e) => {
-    const firstName = e.firstName.split('');
-    const lastName = e.lastName.split('');
-    console.log(firstName[0])
-    setAvatarText({
+    let firstName = e.firstName.split('');
+    let lastName = e.lastName.split('');
+    setAvatarInitials({
       firstInitial: firstName[0],
       secondInitial: lastName[0]
     })
     setText(true)
-    console.log(avatarText.secondInitial)
   }
 
   const handleChange = (e) =>{
@@ -60,7 +57,7 @@ export default function Home() {
                     <Image publicId="sample" alt="profile">
                     <Transformation width="150" height="150" gravity="face" effect="blur:200" radius="max" crop="thumb" />
                     <Transformation background="#C5E5FC" />
-	                  <Transformation overlay={{fontFamily: "Arial", fontSize: 50, fontWeight: "bold", text: `${text ? avatarText.firstInitial : "A"}${text ? avatarText.secondInitial : "B"}`}} color="white" />
+	                  <Transformation overlay={{fontFamily: "Arial", fontSize: 50, fontWeight: "bold", text: `${text ? avatarInitials.firstInitial : "A"}${text ? avatarInitials.secondInitial : "B"}`}} color="white" />
                     </Image>
                 </CloudinaryContext>
         </div>
